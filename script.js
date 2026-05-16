@@ -8,14 +8,18 @@ const $ = (...selectors) => document.querySelector(...selectors)
 const $$ = (...selectors) => document.querySelectorAll(...selectors)
 
 const routes = {
-  '/': Home,
-  '/about': About,
-  '404': NotFound,
+  '/vanilla/': Home,
+  '/vanilla/about': About,
+  '/vanilla/404': NotFound,
+}
+if (location.pathname === '/') {
+  history.replaceState({}, undefined, '/vanilla/')
 }
 
 function update () {
   const { pathname } = window.location
   const route = routes[pathname] || routes['404']
+  console.log(route.name)
 
   const title = [
     t[route.name].title[t.lang],
