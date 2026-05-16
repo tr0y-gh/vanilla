@@ -15,11 +15,10 @@
 /* Resets */
 *, *::before, *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 html, body { height: 100%; width: 100%; }
 body {
+  margin: 0;
   font: 16px var(--font-sans);
   color: var(--fg-0);
   background: var(--bg-0);
@@ -60,6 +59,10 @@ body {
 }
 
 #page-header, #page-footer {
+  &, select {
+    font-family: var(--font-mono);
+  }
+
   ul { padding: 0; }
   a, a:visited {
     color: var(--fg-0);
@@ -67,12 +70,16 @@ body {
   }
 }
 #page-header {
-  ul li:not(:first-child) { margin-left: var(--spacing-sm); }
+  ul li:not(:first-child) { margin-left: var(--spacing-md); }
 }
 #page-footer {
   ul li:not(:first-child) { margin-top: var(--spacing-sm); }
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono);
+}
+
 ul, ol {
-  &.unstyled { list-style: none; }
+  &.unstyled { list-style: none; margin: 0; padding: 0; }
 }

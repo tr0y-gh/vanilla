@@ -1,9 +1,11 @@
+import t from './i18n.js'
+
 export default {
-  title: '404',
+  name: 'NotFound',
   render () {
     return `
-      <h1>404</h1>
-      <p>Page not found!</p>
+      <h1>${t.NotFound.title[t.lang]}</h1>
+      ${t.NotFound.content[t.lang].map(p => `<p>${p}</p>`).join('')}
     `
   }
 }

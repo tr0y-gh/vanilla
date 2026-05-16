@@ -1,9 +1,11 @@
+import t from './i18n.js'
+
 export default {
-  title: 'About',
+  name: 'About',
   render () {
     return `
-      <h1>About</h1>
-      <p>This is the /about route!</p>
+      <h1>${t.About.title[t.lang]}</h1>
+      ${t.About.content[t.lang].map(p => `<p>${p}</p>`).join('')}
     `
   }
 }

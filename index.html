@@ -13,11 +13,18 @@
     <header id="page-header">
       <a href="#main" id="skip-link">Skip to content</a>
       <div class="container">
-        <nav>
+        <nav class="flex">
+          <ul class="unstyled flex flex-1">
+            <li><a href="/">Vanilla</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
           <ul class="unstyled flex">
-            <li><a href="/">home</a></li>
-            <li><a href="/about">about</a></li>
-            <li><a href="/not-found">not found</a></li>
+            <li>
+              <select id="lang">
+                <option value="en">English</option>
+                <option value="se">Svenska</option>
+              </select>
+            </li>
           </ul>
         </nav>
       </div>
@@ -33,9 +40,8 @@
     <footer id="page-footer">
       <div class="container">
         <ul class="unstyled">
-          <li><a href="/">home</a></li>
-          <li><a href="/about">about</a></li>
-          <li><a href="/not-found">contact</a></li>
+          <li><a href="/">Vanilla</a></li>
+          <li><a href="/about">About</a></li>
         </ul>
       </div>
     </footer>
