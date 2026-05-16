@@ -6,13 +6,13 @@ export default {
     content: {
       en: [
         'This project is an exercise in minimalist and modern web development.',
-        'No dependencies or build steps, just vanilla JavaScript, HTML and CSS.',
-        'The source code is available on <a href="#todo">git</a>.',
+        'No dependencies or build steps, just vanilla <code>JavaScript</code>, <code>HTML</code> and <code>CSS</code>.',
+        'The source code is available on <a href="https://codeberg.org/tr0y/vanilla">Codeberg</a> and mirrored on <a href="https://github.com/tr0y-gh/vanilla">GitHub</a>.',
       ], 
       se: [
         'Det här projektet är en övning i minimalistisk och modern webbutveckling.',
-        'Inga ramverk eller byggsteg, bara enkel JavaScript, HTML och CSS.',
-        'Källkoden finns tillgänglig på <a href="#todo">git</a>.',
+        'Inga ramverk eller byggsteg, bara enkel <code>JavaScript</code>, <code>HTML</code> och <code>CSS</code>.',
+        'Källkoden finns tillgänglig på <a href="https://codeberg.org/tr0y/vanilla">Codeberg</a> och speglas på <a href="https://github.com/tr0y-gh/vanilla">GitHub</a>.',
       ], 
     },
   }, 
