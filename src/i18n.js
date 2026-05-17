@@ -1,6 +1,13 @@
 export default {
   lang: 'en',
   title: { en: 'Vanilla', se: 'Vanilj' },
+  skipLink: { en: 'Skip to content', se: 'Hoppa till innehållet' },
+  nav: {
+    '/': { en: 'Vanilla', se: 'Vanilj' },
+    '/styleguide': { en: 'Styleguide', se: 'Stilguide' },
+  },
+  dark: { en: 'Dark', se: 'Mörkt' },
+  light: { en: 'Light', se: 'Ljust' },
   Home: {
     title: { en: 'Vanilla', se: 'Vanilj' },
     content: {
@@ -69,16 +76,16 @@ export default {
           en: [
             '<input placeholder="Input something" />',
             `<select>
-  <option value=''>Pick something</option>
-  <option>Something</option>
+  <option>Pick something</option>
+  <option value='something'>Something</option>
 </select>`,
             '<button>Click me</button>',
           ],
           se: [
             '<input placeholder="Skriv något" />',
             `<select>
-  <option value=''>Välj något</option>
-  <option>Något</option>
+  <option>Välj något</option>
+  <option value='something'>Något</option>
 </select>`,
             '<button>Klicka här</button>',
           ],

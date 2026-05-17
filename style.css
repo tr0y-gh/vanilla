@@ -147,6 +147,8 @@ code { padding: 0 .25em; }
 pre { padding: var(--spacing-sm); }
 
 input, select, button {
+  z-index: 1;
+  &:focus { z-index: 10; }
   padding: var(--spacing-xs) var(--spacing-sm);
   border: 1px solid var(--bg-1);
   background: var(--bg-2);

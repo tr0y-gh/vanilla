@@ -1,20 +1,28 @@
 import t from './src/i18n.js'
+import { $ } from './src/utils.js'
 import router from './src/router.js'
 
 function updateLanguage (e) {
-  // TODO
-  // - translate #skip-link
-  // - translate #page-header
-  // - translate #page-footer
   const lang = e.target.value
   t.lang = lang
   window.localStorage.setItem('lang', lang)
-  router.update()
+
+  $.one('#skip-link').textContent = t.skipLink[lang]
+  // translate #page-header and #page-footer links
+  $.all('.nav a').forEach(a => {
+    const { pathname } = new URL(a.href)
+    a.textContent = t.nav[pathname][t.lang]
+  })
+  $.all('#theme option').forEach(el => {
+    el.textContent = t[el.value][t.lang]
+  })
+
+  router.render()
 }
 
 function updateTheme (theme) {
-  document.querySelector('#theme').value = theme
-  document.querySelector('body').className = theme
+  $.one('#theme').value = theme
+  $.one('body').className = theme
   window.localStorage.setItem('theme', theme)
 }
 
@@ -25,8 +33,11 @@ function init () {
   // i18n
   const lang = window.localStorage.getItem('lang') || t.lang
   t.lang = lang
-  document.querySelector('#lang').value = t.lang
-  document.querySelector('#lang').onchange = updateLanguage
+  $.one('#lang').value = t.lang
+  $.all('#theme option').forEach(el => {
+    el.innerText = t[el.value][t.lang]
+  })
+  $.one('#lang').onchange = updateLanguage
 
   // theme
   let theme = null
@@ -36,10 +47,10 @@ function init () {
   // then override with site settings
   theme = window.localStorage.getItem('theme') || theme
   updateTheme(theme)
-  document.querySelector('#theme').onchange = e => updateTheme(e.target.value)
+  $.one('#theme').onchange = e => updateTheme(e.target.value)
 
   // router
-  const links = document.querySelectorAll('a[href]')
+  const links = $.all('a[href]')
   for (let link of links) {
     const href = link.getAttribute('href')
     if (href.startsWith('/')) {
@@ -48,7 +59,7 @@ function init () {
     }
   }
 
-  window.onpopstate = router.update
-  router.update()
+  window.onpopstate = router.render
+  router.render()
 }
 window.onload = init

@@ -1,4 +1,4 @@
-import t from './i18n.js'
+import t from '../i18n.js'
 
 function escapeHTML (str) {
   return str.replace(/[<>]/g, c => ({ '<': '&lt;', '>': '&gt;' }[c]))

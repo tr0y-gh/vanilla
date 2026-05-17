@@ -1,7 +1,8 @@
 import t from './i18n.js'
-import Home from './Home.js'
-import Styleguide from './Styleguide.js'
-import NotFound from './NotFound.js'
+import { $ } from './utils.js'
+import Home from './routes/Home.js'
+import Styleguide from './routes/Styleguide.js'
+import NotFound from './routes/NotFound.js'
 
 const routes = {
   '/': Home,
@@ -9,27 +10,15 @@ const routes = {
   '/404': NotFound,
 }
 
-function update () {
-  const { pathname } = window.location
-  const route = routes[pathname] || routes['404']
-
-  const title = [
-    t[route.name].title[t.lang],
-    pathname !== '/' && t.title[t.lang],
-  ].filter(i => i)
-
-  document.querySelector('title').innerHTML = title.join(' | ')
-  document.querySelector('#main').innerHTML = route.render()
-}
-
 function navigate (e) {
   const { href } = e.target
   e.preventDefault()
   history.pushState({}, undefined, href)
-  update()
+  render()
 }
 
 function redirect () {
+  // redirect /path to index.html but keep /path
   var redirect = sessionStorage.redirect;
   delete sessionStorage.redirect;
   if (redirect && redirect != location.href) {
@@ -37,9 +26,22 @@ function redirect () {
   }
 }
 
+function render () {
+  const { pathname } = window.location
+  const route = routes[pathname] || routes['/404']
+
+  const title = [
+    t[route.name].title[t.lang],
+    pathname !== '/' && t.title[t.lang],
+  ].filter(i => i)
+
+  $.one('title').textContent = title.join(' | ')
+  $.one('#main').innerHTML = route.render()
+}
+
 export default {
-  update,
   navigate,
   redirect,
+  render,
   routes,
 }
