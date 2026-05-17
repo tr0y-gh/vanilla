@@ -1,6 +1,7 @@
 /* Variables */
 :root {
   --max-width: 1000px;
+  --spacing-xs: .25rem;
   --spacing-sm: .5rem;
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
@@ -9,8 +10,19 @@
   --font-serif: Times New Roman, serif;
   --font-mono: Courier New, monospace;
 
-  --bg-0: #fff;
-  --fg-0: #000;
+  --light-0: #fff;
+  --light-1: #eee;
+  --light-2: #ddd;
+  --dark-0: #000;
+  --dark-1: #111;
+  --dark-2: #222;
+
+  --bg-0: var(--light-0);
+  --bg-1: var(--light-1);
+  --bg-2: var(--light-2);
+  --fg-0: var(--dark-0);
+  --fg-1: var(--dark-1);
+  --fg-2: var(--dark-2);
   --theme-transition: color .25s ease-out, background .25s ease-out;
 }
 
@@ -30,18 +42,30 @@ body {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-0: #000;
-    --fg-0: #fff;
+    --bg-0: var(--dark-0);
+    --bg-1: var(--dark-1);
+    --bg-2: var(--dark-2);
+    --fg-0: var(--light-0);
+    --fg-1: var(--light-1);
+    --fg-2: var(--light-2);
   }
 }
 
 .light {
-  --bg-0: #fff;
-  --fg-0: #000;
+  --bg-0: var(--light-0);
+  --bg-1: var(--light-1);
+  --bg-2: var(--light-2);
+  --fg-0: var(--dark-0);
+  --fg-1: var(--dark-1);
+  --fg-2: var(--dark-2);
 }
 .dark {
-  --bg-0: #000;
-  --fg-0: #fff;
+  --bg-0: var(--dark-0);
+  --bg-1: var(--dark-1);
+  --bg-2: var(--dark-2);
+  --fg-0: var(--light-0);
+  --fg-1: var(--light-1);
+  --fg-2: var(--light-2);
 }
 body {
   transition: var(--theme-transition);
@@ -103,6 +127,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-mono);
 }
 
+p {
+  &.lead { font-size: 1.25rem; }
+}
+
 a, a:visited {
   color: var(--fg-0);
 }
@@ -113,4 +141,14 @@ ul, ol {
 
 code, pre {
   font-family: var(--font-mono);
+  background: var(--bg-1);
+}
+code { padding: 0 .25em; }
+pre { padding: var(--spacing-sm); }
+
+input, select, button {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--bg-1);
+  background: var(--bg-2);
+  color: var(--fg-1);
 }

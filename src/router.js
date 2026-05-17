@@ -1,11 +1,11 @@
 import t from './i18n.js'
 import Home from './Home.js'
-import About from './About.js'
+import Styleguide from './Styleguide.js'
 import NotFound from './NotFound.js'
 
 const routes = {
   '/': Home,
-  '/about': About,
+  '/styleguide': Styleguide,
   '/404': NotFound,
 }
 
