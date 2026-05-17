@@ -12,6 +12,12 @@ function updateLanguage (e) {
   router.update()
 }
 
+function updateTheme (theme) {
+  document.querySelector('#theme').value = theme
+  document.querySelector('body').className = theme
+  window.localStorage.setItem('theme', theme)
+}
+
 
 function init () {
   // i18n
@@ -19,6 +25,16 @@ function init () {
   t.lang = lang
   document.querySelector('#lang').value = t.lang
   document.querySelector('#lang').onchange = updateLanguage
+
+  // theme
+  let theme = null
+  // check OS and browser preferences
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) theme = 'dark'
+  if (window.matchMedia('(prefers-color-scheme: light)').matches) theme = 'light'
+  // then override with site settings
+  theme = window.localStorage.getItem('theme') || theme
+  updateTheme(theme)
+  document.querySelector('#theme').onchange = e => updateTheme(e.target.value)
 
   // router
   const links = document.querySelectorAll('a[href]')
@@ -29,7 +45,8 @@ function init () {
       link.addEventListener('click', router.navigate)
     }
   }
+
   window.onpopstate = router.update
-  window.onload = router.update
+  router.update()
 }
-init()
+window.onload = init

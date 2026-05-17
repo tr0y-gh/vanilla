@@ -11,7 +11,9 @@
 
   --bg-0: #fff;
   --fg-0: #000;
+  --theme-transition: color .25s ease-out, background .25s ease-out;
 }
+
 /* Resets */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -22,6 +24,27 @@ body {
   font: 16px var(--font-sans);
   color: var(--fg-0);
   background: var(--bg-0);
+}
+
+/* Theme */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-0: #000;
+    --fg-0: #fff;
+  }
+}
+
+.light {
+  --bg-0: #fff;
+  --fg-0: #000;
+}
+.dark {
+  --bg-0: #000;
+  --fg-0: #fff;
+}
+body {
+  transition: var(--theme-transition);
 }
 
 /* Sticky footer */
@@ -78,6 +101,10 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-mono);
+}
+
+a, a:visited {
+  color: var(--fg-0);
 }
 
 ul, ol {
