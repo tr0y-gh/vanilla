@@ -20,6 +20,8 @@ function updateTheme (theme) {
 
 
 function init () {
+  router.redirect() // redirect from 404.html
+
   // i18n
   const lang = window.localStorage.getItem('lang') || t.lang
   t.lang = lang
