@@ -8,12 +8,9 @@ const $ = (...selectors) => document.querySelector(...selectors)
 const $$ = (...selectors) => document.querySelectorAll(...selectors)
 
 const routes = {
-  '/vanilla/': Home,
-  '/vanilla/about': About,
-  '/vanilla/404': NotFound,
-}
-if (location.pathname === '/') {
-  history.replaceState({}, undefined, '/vanilla/')
+  '/': Home,
+  '/about': About,
+  '/404': NotFound,
 }
 
 function update () {
